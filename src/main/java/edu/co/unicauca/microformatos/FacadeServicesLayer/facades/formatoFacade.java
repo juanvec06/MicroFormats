@@ -1,18 +1,29 @@
 package edu.co.unicauca.microformatos.FacadeServicesLayer.facades;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+
+import edu.co.unicauca.microformatos.FacadeServicesLayer.DTOs.input.ProposalCreateDTO;
+import edu.co.unicauca.microformatos.FacadeServicesLayer.DTOs.output.ProposalResponseDTO;
+import edu.co.unicauca.microformatos.FacadeServicesLayer.services.IFormatoService;
+
 import java.util.List;
-import java.util.ArrayList;
-
 @Service
-public class formatoFacade {
+public class FormatoFacade {
 
-    public List<Object> consultarFormatos() {
-        // Lógica para consultar formatos
-        return new ArrayList<>();
+    @Autowired
+    @Qualifier("IDFormatoService")
+    private IFormatoService service;
+
+    public List<ProposalResponseDTO> consultarFormatos() {
+        return service.getAllProposals();
     }
-    public Object crearFormato(Object formato) {
-        // Lógica para crear un nuevo formato
-        return new Object();
+
+    public ProposalResponseDTO crearFormato(ProposalCreateDTO formato) {
+        if (formato == null) {
+            return null;
+        }
+        return service.createProposal(formato);
     }
 }

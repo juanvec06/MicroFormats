@@ -7,6 +7,15 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
+/**
+ * Model class that represents a generic proposal entity.
+ *
+ * <p>This base class contains the shared information for proposal types such as
+ * research proposals and practice proposals. It is intended to be extended by
+ * concrete proposal implementations.</p>
+ *
+ * @author Juan David Vela Coronado
+ */
 @Data
 @SuperBuilder
 @NoArgsConstructor
@@ -24,5 +33,9 @@ public abstract class Proposal {
     private String fundingSources;
     private String observations;
     private String universityDirectorName;
+    /**
+     * Current lifecycle state of the proposal.
+     */
+    private ProposalState state;
     private List<Student> students; // Polymorphic behavior is not strictly needed on List if generics are used, but List<Student> is fine.
 }

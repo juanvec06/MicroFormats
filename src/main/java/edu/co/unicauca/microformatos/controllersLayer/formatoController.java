@@ -8,7 +8,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import edu.co.unicauca.microformatos.FacadeServicesLayer.facades.formatoFacade;
+import edu.co.unicauca.microformatos.FacadeServicesLayer.DTOs.output.ProposalResponseDTO;
+import edu.co.unicauca.microformatos.FacadeServicesLayer.DTOs.input.ProposalCreateDTO;
+import edu.co.unicauca.microformatos.FacadeServicesLayer.facades.FormatoFacade;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/formatos")
@@ -16,19 +19,19 @@ import edu.co.unicauca.microformatos.FacadeServicesLayer.facades.formatoFacade;
 public class formatoController {
 
     
-	private final formatoFacade formatoFacade;
+	private final FormatoFacade formatoFacade;
 
-	public formatoController(formatoFacade formatoFacade) {
+	public formatoController(FormatoFacade formatoFacade) {
 		this.formatoFacade = formatoFacade;
 	}
 
 	@GetMapping
-	public ResponseEntity<Object> consultarFormatos() {
+	public ResponseEntity<List<ProposalResponseDTO>> consultarFormatos() {
 		return ResponseEntity.ok(formatoFacade.consultarFormatos());
 	}
 
 	@PostMapping
-	public ResponseEntity<Object> crearFormato(@RequestBody Object formato) {
+	public ResponseEntity<ProposalResponseDTO> crearFormato(@RequestBody ProposalCreateDTO formato) {
 		return ResponseEntity.status(HttpStatus.CREATED).body(formatoFacade.crearFormato(formato));
 	}
     

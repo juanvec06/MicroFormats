@@ -5,6 +5,11 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * @brief Model class for representing a Student entity.
+ * This class contains the attributes and methods related to a student, such as their ID, university ID, name, email, career, country of origin, and city of expedition.
+ * @author Juan David Vela Coronado
+ */
 @Data
 @Builder
 @NoArgsConstructor
@@ -16,6 +21,5 @@ public class Student {
     private String name;
     private String email;
     private String career;
-    private Long countryId;
     private String cityExpedition;
 }
