@@ -18,7 +18,7 @@ public class DBConection {
         try {
             Class.forName("org.h2.Driver");
             connection = DriverManager.
-            getConnection("jdbc:h2:mem:testfacturasdb", "sa", "");
+            getConnection("jdbc:h2:mem:testformatdb", "sa", "");
             
         } catch (Exception e) {
             e.printStackTrace();

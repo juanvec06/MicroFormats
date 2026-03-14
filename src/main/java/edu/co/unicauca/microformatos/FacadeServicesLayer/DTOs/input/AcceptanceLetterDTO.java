@@ -4,22 +4,30 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import jakarta.validation.Valid;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-public record AcceptanceLetterDTO(
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+public class AcceptanceLetterDTO {
     @NotBlank(message = "Company name is required")
-    String companyName,
+    private String companyName;
     
     @NotBlank(message = "Company Adviser role is required")
-    String role,
+    private String role;
     
     @NotNull(message = "Hours of total work is required")
     @Positive(message = "Total hours must be a positive number")
-    Integer totalHours,
+    private Integer totalHours;
 
     @NotBlank(message = "Number of contract is required")
-    String contractNumber,
+    private String contractNumber;
 
     @NotNull(message = "Department is required")
     @Valid
-    DepartmentDTO department
-) {}
+    private DepartmentDTO department;
+}
